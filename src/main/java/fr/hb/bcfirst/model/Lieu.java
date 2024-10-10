@@ -2,17 +2,14 @@ package fr.hb.bcfirst.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
+
 
 @Entity
+@Table(name = "jeux")
 @Data
-@NoArgsConstructor
-@RequiredArgsConstructor
-@Builder
 public class Lieu {
+
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -34,13 +31,25 @@ public class Lieu {
     @Column(length=100, nullable = false)
     private String codePostal;
 
-    @NotBlank(message="Merci de préciser une latitude")
     @Column(length=100, nullable = false)
     private float latitude;
 
-    @NotBlank(message="Merci de préciser une longitude")
     @Column(length=100, nullable = false)
     private float longitude;
+
+
+    public Lieu(){
+
+    }
+
+    public Lieu(String numero, String rue, String ville, String codePostal, float latitude, float longitude) {
+        this.numero = numero;
+        this.rue = rue;
+        this.ville = ville;
+        this.codePostal = codePostal;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
 
 
 }
