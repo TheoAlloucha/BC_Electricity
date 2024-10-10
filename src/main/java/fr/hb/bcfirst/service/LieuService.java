@@ -1,8 +1,7 @@
 package fr.hb.bcfirst.service;
 
 import fr.hb.bcfirst.model.Lieu;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +16,6 @@ public interface LieuService {
 
     List<Lieu> recupererLieux();
 
-    void supprimerLieu(Long idLieu);
+    ResponseEntity<Void> supprimerLieu(Long idLieu);
 
 }

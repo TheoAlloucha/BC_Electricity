@@ -6,8 +6,7 @@ import fr.hb.bcfirst.repository.LieuRepository;
 import fr.hb.bcfirst.service.LieuService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -51,8 +50,9 @@ public class LieuServiceImpl implements LieuService {
     }
 
     @Override
-    public void supprimerLieu(Long idLieu) {
+    public ResponseEntity<Void> supprimerLieu(Long idLieu) {
         lieuRepository.deleteById(idLieu);
+        return null;
     }
 
 }

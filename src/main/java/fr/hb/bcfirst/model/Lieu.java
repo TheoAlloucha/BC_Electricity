@@ -1,12 +1,13 @@
 package fr.hb.bcfirst.model;
 
+import fr.hb.bcfirst.dto.LieuDto;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 
 @Entity
-@Table(name = "jeux")
+@Table(name = "lieux")
 @Data
 public class Lieu {
 
@@ -40,6 +41,15 @@ public class Lieu {
 
     public Lieu(){
 
+    }
+
+    public Lieu (LieuDto lieuDto) {
+        this.numero = lieuDto.getNumero();
+        this.rue = lieuDto.getRue();
+        this.ville = lieuDto.getVille();
+        this.codePostal = lieuDto.getCodePostal();
+        this.latitude = lieuDto.getLatitude();
+        this.longitude = lieuDto.getLongitude();
     }
 
     public Lieu(String numero, String rue, String ville, String codePostal, float latitude, float longitude) {
