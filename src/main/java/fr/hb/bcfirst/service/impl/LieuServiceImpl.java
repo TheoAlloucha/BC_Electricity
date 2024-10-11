@@ -21,7 +21,6 @@ public class LieuServiceImpl implements LieuService {
     @Autowired
     private LieuRepository lieuRepository;
 
-
     @Override
     public Lieu enregistrerLieu(Lieu lieu) {
         return lieuRepository.save(lieu);

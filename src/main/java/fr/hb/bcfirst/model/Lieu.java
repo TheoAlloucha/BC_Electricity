@@ -1,14 +1,19 @@
 package fr.hb.bcfirst.model;
 
-import fr.hb.bcfirst.dto.LieuDto;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
+
+import java.util.List;
 
 
 @Entity
 @Table(name = "lieux")
 @Data
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Lieu {
 
 
@@ -38,19 +43,8 @@ public class Lieu {
     @Column(length=100, nullable = false)
     private float longitude;
 
-
-    public Lieu(){
-
-    }
-
-    public Lieu (LieuDto lieuDto) {
-        this.numero = lieuDto.getNumero();
-        this.rue = lieuDto.getRue();
-        this.ville = lieuDto.getVille();
-        this.codePostal = lieuDto.getCodePostal();
-        this.latitude = lieuDto.getLatitude();
-        this.longitude = lieuDto.getLongitude();
-    }
+    @OneToMany(mappedBy = "lieu")
+    private List<Borne> bornes;
 
     public Lieu(String numero, String rue, String ville, String codePostal, float latitude, float longitude) {
         this.numero = numero;
@@ -61,5 +55,7 @@ public class Lieu {
         this.longitude = longitude;
     }
 
+    public Lieu() {
 
+    }
 }

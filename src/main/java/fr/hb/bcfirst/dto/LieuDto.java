@@ -1,9 +1,11 @@
 package fr.hb.bcfirst.dto;
 
+import fr.hb.bcfirst.model.Borne;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Value;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * DTO for {@link fr.hb.bcfirst.model.Lieu}
@@ -21,4 +23,5 @@ public class LieuDto implements Serializable {
     String codePostal;
     float latitude;
     float longitude;
+    List<Borne> bornes;
 }
