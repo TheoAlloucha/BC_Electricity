@@ -4,6 +4,7 @@ import { Lieu } from "@/types/Lieu";
 import "leaflet-defaulticon-compatibility";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css"; // Re-uses images from ~leaflet package
 import "leaflet/dist/leaflet.css";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import {
   MapContainer,
@@ -28,50 +29,34 @@ function SetViewOnClick({ animateRef }: SetViewOnClickProps) {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const MapComponent = (props: any) => {
+const MapComponent = ({
+  markers,
+  position,
+}: {
+  markers: Lieu[];
+  position: [number, number] | null;
+}) => {
   const animateRef = useRef(false);
-  const [position, setPosition] = useState<[number, number] | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [error] = useState<string | null>(null);
   const [isClient, setIsClient] = useState<boolean>(false);
-  const [markers, setMarkers] = useState([]);
 
   useEffect(() => {
-    // Détermine si l'on est du côté client
     setIsClient(true);
-    setMarkers(props.markers);
-  }, [props.markers]);
+  }, []);
 
   useEffect(() => {
-    if (isClient) {
-      const handleGeolocationSuccess = (pos: GeolocationPosition) => {
-        const { latitude, longitude } = pos.coords;
-        setPosition([latitude, longitude]);
-      };
-
-      const handleGeolocationError = (error: GeolocationPositionError) => {
-        setError("Impossible de récupérer votre position.");
-        console.error(error);
-      };
-
-      navigator.geolocation.getCurrentPosition(
-        handleGeolocationSuccess,
-        handleGeolocationError
-      );
+    if (isClient && position) {
     }
-  }, [isClient]);
+  }, [isClient, position]);
 
   if (error) {
-    return <div>{error}</div>; // Afficher le message d'erreur
+    return <div>{error}</div>;
   }
 
   return (
     <>
-      {position && markers ? (
-        <MapContainer
-          center={position || [51.505, -0.09]}
-          zoom={13}
-          scrollWheelZoom={true}
-        >
+      {position ? (
+        <MapContainer center={position} zoom={13} scrollWheelZoom={true}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -79,16 +64,19 @@ const MapComponent = (props: any) => {
 
           {Array.isArray(markers) && markers.length > 0 ? (
             markers.map((lieu: Lieu) => (
-              <Marker key={lieu.id} position={[lieu.longitude, lieu.latitude]}>
+              <Marker key={lieu.id} position={[lieu.latitude, lieu.longitude]}>
                 <Popup>
-                  {lieu.numero + " " + lieu.rue + " " + lieu.ville}
-                  {lieu.bornes.map((borne: Borne) => {
-                    return (
-                      <p key={borne.nom}>
-                        {borne.nom} - {borne.tauxHoraire}$
-                      </p>
-                    );
-                  })}
+                  <div className="flex flex-col gap-2">
+                    {lieu.numero + " " + lieu.rue + " " + lieu.ville}
+                    {lieu.bornes.map((borne: Borne) => {
+                      return (
+                        <Link key={borne.id} href={`/bornes/${borne.id}`}>
+                          {borne.nom} - {borne.puissance}kvh -{" "}
+                          {borne.tauxHoraire}€
+                        </Link>
+                      );
+                    })}
+                  </div>
                 </Popup>
               </Marker>
             ))
@@ -104,7 +92,7 @@ const MapComponent = (props: any) => {
           <SetViewOnClick animateRef={animateRef} />
         </MapContainer>
       ) : (
-        <p>Chargement de votre position...</p>
+        ""
       )}
     </>
   );

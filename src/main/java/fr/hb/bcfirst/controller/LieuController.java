@@ -8,6 +8,7 @@ import fr.hb.bcfirst.service.LieuService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -22,7 +23,9 @@ import org.springframework.web.server.ResponseStatusException;
 @CrossOrigin(origins = "http://localhost:3000")
 
 public class LieuController {
+    @Autowired
     private LieuService lieuService;
+    @Autowired
     private LieuMapper lieuMapper;
 
     @GetMapping("/")

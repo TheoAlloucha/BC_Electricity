@@ -4,7 +4,9 @@ import fr.hb.bcfirst.dto.LieuDto;
 import fr.hb.bcfirst.model.Lieu;
 import jakarta.validation.Valid;
 import org.mapstruct.*;
+import org.springframework.stereotype.Component;
 
+@Component("LieuMapper")
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
 public interface LieuMapper {
     Lieu toEntity(@Valid LieuDto lieuDto);

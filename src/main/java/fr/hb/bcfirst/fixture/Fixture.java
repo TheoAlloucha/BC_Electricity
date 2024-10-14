@@ -33,11 +33,11 @@ public class Fixture implements CommandLineRunner {
     }
 
     private void ajouterLieu() {
-        Lieu lieu1 = new Lieu("1", "rue de lavenue", "Perpignan", "66000", 19.8923F, 12.1420F);
-        Lieu lieu2 = new Lieu("2", "rue de la rue", "Perpignan", "66000", 13.8923F, 12.3220F);
-        Lieu lieu3 = new Lieu("3", "rue du boulevard", "Perpignan", "66000", 15.8923F, 14.9320F);
-        Lieu lieu4 = new Lieu("4", "rue de l'impasse", "Perpignan", "66000", 16.8923F, 11.9320F);
-        Lieu lieu5 = new Lieu("5", "rue de du pavilon", "Perpignan", "66000", 17.8923F, 12.9320F);
+        Lieu lieu1 = new Lieu("1", "rue de lavenue", "Perpignan", "66000", 43.96920F, 2.28480F);
+        Lieu lieu2 = new Lieu("2", "rue de la rue", "Perpignan", "66000", 45.73620F, 1.87280F);
+        Lieu lieu3 = new Lieu("3", "rue du boulevard", "Perpignan", "66000", 42.92830F, 2.29080F);
+        Lieu lieu4 = new Lieu("4", "rue de l'impasse", "Perpignan", "66000", 48.34120F, 2.31280F);
+        Lieu lieu5 = new Lieu("5", "rue de du pavilon", "Perpignan", "66000", 48.34560F, 1.49280F);
 
         // Sauvegarde des lieux dans la base de données
         lieuRepository.saveAndFlush(lieu1);
@@ -49,11 +49,17 @@ public class Fixture implements CommandLineRunner {
         // Récupération des lieux à partir de la base pour s'assurer qu'ils sont attachés
         Lieu lieuFind1 = lieuRepository.findById(lieu1.getId()).orElseThrow();
         Lieu lieuFind2 = lieuRepository.findById(lieu2.getId()).orElseThrow();
+        Lieu lieuFind3 = lieuRepository.findById(lieu3.getId()).orElseThrow();
+        Lieu lieuFind4 = lieuRepository.findById(lieu4.getId()).orElseThrow();
+        Lieu lieuFind5 = lieuRepository.findById(lieu5.getId()).orElseThrow();
 
         // Sauvegarde des bornes avec les lieux récupérés
-        borneRepository.save(new Borne("NEW BORNE", "instruction", true, 1.2F, "photo", "video", 1.2F, lieuFind1));
-        borneRepository.save(new Borne("NEW BORNE2", "instruction", true, 3F, "photo", "video", 42F, lieuFind1));
+        borneRepository.save(new Borne("NEW BORNE1", "instruction", true, 1.2F, "photo", "video", 1.2F, lieuFind1));
+        borneRepository.save(new Borne("NEW BORNE2", "instruction", false, 3F, "photo", "video", 42F, lieuFind1));
         borneRepository.save(new Borne("NEW BORNE3", "instruction", true, 2.0F, "photo", "video", 2.3F, lieuFind2));
+        borneRepository.save(new Borne("NEW BORNE4", "instruction", false, 12.0F, "photo", "video", 22.3F, lieuFind3));
+        borneRepository.save(new Borne("NEW BORNE5", "instruction", true, 4.0F, "photo", "video", 7.1F, lieuFind4));
+        borneRepository.save(new Borne("NEW BORNE6", "instruction", false, 3.8F, "photo", "video", 7.6F, lieuFind5));
     }
 
 

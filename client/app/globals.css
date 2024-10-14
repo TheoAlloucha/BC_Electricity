@@ -9,3 +9,7 @@ body {
 .leaflet-container {
   height: 100vh;
 }
+
+.geoapify-autocomplete-items {
+  position: relative;
+}
