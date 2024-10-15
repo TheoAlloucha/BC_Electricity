@@ -15,7 +15,6 @@ function AutoCompleteForm({ onPlaceSelect }: AutoCompleteFormProps) {
     <GeoapifyContext apiKey={process.env.NEXT_PUBLIC_GEOAPIFY_API_KEY}>
       <GeoapifyGeocoderAutocomplete
         placeholder="Entrer votre adresse"
-        // Pass the onPlaceSelect function to placeSelect prop
         placeSelect={onPlaceSelect}
       />
     </GeoapifyContext>

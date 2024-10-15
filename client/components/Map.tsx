@@ -28,7 +28,6 @@ function SetViewOnClick({ animateRef }: SetViewOnClickProps) {
   return null;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const MapComponent = ({
   markers,
   position,
