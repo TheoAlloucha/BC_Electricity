@@ -32,11 +32,11 @@ public class Borne {
     private float tauxHoraire;
 
     @NotBlank(message="Merci de préciser un lien vers la photo")
-    @Column(length=100, nullable = false)
+    @Column( nullable = false)
     private String photo;
 
     @NotBlank(message="Merci de préciser un lien vers la video")
-    @Column(length=100, nullable = false)
+    @Column( nullable = false)
     private String video;
 
     @Column(length=100, nullable = false)

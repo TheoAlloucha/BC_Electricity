@@ -1,12 +1,5 @@
-import Link from "next/link";
-
 async function App() {
-  return (
-    <>
-      <Link href={"/bornes/"}>Trouver votre borne</Link>
-      <h1>Hello</h1>
-    </>
-  );
+  return <>Accueil</>;
 }
 
 export default App;

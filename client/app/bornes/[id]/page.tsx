@@ -1,6 +1,7 @@
 "use client";
 
 import { Borne } from "@/types/Borne";
+import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -22,17 +23,36 @@ function Page() {
   }, [id]);
 
   return (
-    <div className="w-full">
-      <Link href="/">Retour à la page principale</Link>
-      <div className="flex flex-col items-center m-3">
-        <h1>Borne id : {id}</h1>
-        <p>Nom : {borne?.nom}</p>
-        <p>instructions : {borne?.instructions ?? "Aucune instruction"}</p>
-        <p>tauxHoraire : {borne?.tauxHoraire} €/h</p>
-        <p>puissance : {borne?.puissance} kvn</p>
-        <p>onPied : {borne?.onPied ? "Oui" : "Non"}</p>
-        <p>photo : {borne?.photo ?? "Aucune photo"}</p>
-        <p>video : {borne?.video ?? "Aucun video"}</p>
+    <div className="w-full mt-3">
+      <button className="btn">
+        {" "}
+        <Link href="/">Retour à la page principale</Link>
+      </button>
+
+      <div className="card card-side bg-base-100 shadow-xl mt-3">
+        <figure>
+          <Image
+            width={1000}
+            height={100}
+            src={
+              borne?.photo
+                ? borne.photo
+                : "https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+            }
+            alt="Movie"
+            className="w-full"
+          />
+        </figure>
+        <div className="card-body">
+          <h2 className="card-title">{borne?.nom}</h2>
+          <div>
+            <p>instructions : {borne?.instructions ?? "Aucune instruction"}</p>
+            <p>tauxHoraire : {borne?.tauxHoraire} €/h</p>
+            <p>puissance : {borne?.puissance} kvn</p>
+            <p>Sur pied : {borne?.onPied ? "Oui" : "Non"}</p>
+            <button className="btn btn-primary mt-3">Louer</button>
+          </div>
+        </div>
       </div>
     </div>
   );

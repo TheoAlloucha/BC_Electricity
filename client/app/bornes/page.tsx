@@ -48,7 +48,6 @@ function App() {
     <>
       <div className="w-screen h-full">
         <div className="flex flex-col items-center m-3">
-          <h1>Trouver votre borne</h1>
           <div className="pb-[100px]">
             <AutoCompleteForm
               onPlaceSelect={(value: Values) => {
