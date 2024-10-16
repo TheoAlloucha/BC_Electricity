@@ -1,4 +1,3 @@
-// AjouterBorneForm.tsx
 "use client";
 
 import { Lieu } from "@/types/Lieu";

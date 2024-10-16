@@ -1,4 +1,3 @@
-// AjouterLieuForm.tsx
 "use client";
 
 import { LieuFormData, lieuSchema } from "@/utils/schema";
@@ -47,7 +46,7 @@ export default function AjouterLieuForm() {
         <input
           type="text"
           placeholder="Entrez le numéro"
-          className="input input-bordered w-full"
+          className="input input-bordered w-full focus:ring focus:ring-primary"
           {...register("numero")}
         />
         {errors.numero && (
@@ -63,7 +62,7 @@ export default function AjouterLieuForm() {
         <input
           type="text"
           placeholder="Entrez la rue"
-          className="input input-bordered w-full"
+          className="input input-bordered w-full focus:ring focus:ring-primary"
           {...register("rue")}
         />
         {errors.rue && <span className="text-error">{errors.rue.message}</span>}
@@ -77,7 +76,7 @@ export default function AjouterLieuForm() {
         <input
           type="text"
           placeholder="Entrez la ville"
-          className="input input-bordered w-full"
+          className="input input-bordered w-full focus:ring focus:ring-primary"
           {...register("ville")}
         />
         {errors.ville && (
@@ -93,7 +92,7 @@ export default function AjouterLieuForm() {
         <input
           type="text"
           placeholder="Entrez le code postal"
-          className="input input-bordered w-full"
+          className="input input-bordered w-full focus:ring focus:ring-primary"
           {...register("codePostal")}
         />
         {errors.codePostal && (
@@ -110,7 +109,7 @@ export default function AjouterLieuForm() {
           type="number"
           step="any"
           placeholder="Latitude"
-          className="input input-bordered w-full"
+          className="input input-bordered w-full focus:ring focus:ring-primary"
           {...register("latitude", { valueAsNumber: true })}
         />
         {errors.latitude && (
@@ -127,7 +126,7 @@ export default function AjouterLieuForm() {
           type="number"
           step="any"
           placeholder="Longitude"
-          className="input input-bordered w-full"
+          className="input input-bordered w-full focus:ring focus:ring-primary"
           {...register("longitude", { valueAsNumber: true })}
         />
         {errors.longitude && (

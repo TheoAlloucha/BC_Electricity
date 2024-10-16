@@ -54,12 +54,12 @@ public class Fixture implements CommandLineRunner {
         Lieu lieuFind5 = lieuRepository.findById(lieu5.getId()).orElseThrow();
 
         // Sauvegarde des bornes avec les lieux récupérés
-        borneRepository.save(new Borne("NEW BORNE1", "instruction", true, 1.2F, "https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp", "video", 1.2F, lieuFind1));
-        borneRepository.save(new Borne("NEW BORNE2", "instruction", false, 3F, "https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp", "video", 42F, lieuFind1));
-        borneRepository.save(new Borne("NEW BORNE3", "instruction", true, 2.0F, "https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp", "video", 2.3F, lieuFind2));
-        borneRepository.save(new Borne("NEW BORNE4", "instruction", false, 12.0F, "https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp", "video", 22.3F, lieuFind3));
-        borneRepository.save(new Borne("NEW BORNE5", "instruction", true, 4.0F, "https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp", "video", 7.1F, lieuFind4));
-        borneRepository.save(new Borne("NEW BORNE6", "instruction", false, 3.8F, "https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp", "video", 7.6F, lieuFind5));
+        borneRepository.save(new Borne("NEW BORNE1", "instruction", true, 1.2F, "https://images.pexels.com/photos/28884704/pexels-photo-28884704/free-photo-of-une-petite-voiture-electrique-branchee-sur-une-borne-de-recharge.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "video", 1.2F, lieuFind1));
+        borneRepository.save(new Borne("NEW BORNE2", "instruction", false, 3F, "https://images.pexels.com/photos/28884704/pexels-photo-28884704/free-photo-of-une-petite-voiture-electrique-branchee-sur-une-borne-de-recharge.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "video", 42F, lieuFind1));
+        borneRepository.save(new Borne("NEW BORNE3", "instruction", true, 2.0F, "https://images.pexels.com/photos/28884704/pexels-photo-28884704/free-photo-of-une-petite-voiture-electrique-branchee-sur-une-borne-de-recharge.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "video", 2.3F, lieuFind2));
+        borneRepository.save(new Borne("NEW BORNE4", "instruction", false, 12.0F, "https://images.pexels.com/photos/28884704/pexels-photo-28884704/free-photo-of-une-petite-voiture-electrique-branchee-sur-une-borne-de-recharge.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "video", 22.3F, lieuFind3));
+        borneRepository.save(new Borne("NEW BORNE5", "instruction", true, 4.0F, "https://images.pexels.com/photos/28884704/pexels-photo-28884704/free-photo-of-une-petite-voiture-electrique-branchee-sur-une-borne-de-recharge.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "video", 7.1F, lieuFind4));
+        borneRepository.save(new Borne("NEW BORNE6", "instruction", false, 3.8F, "https://images.pexels.com/photos/28884704/pexels-photo-28884704/free-photo-of-une-petite-voiture-electrique-branchee-sur-une-borne-de-recharge.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "video", 7.6F, lieuFind5));
     }
 
 
